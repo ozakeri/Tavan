@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tavanyab.R;
 import com.example.tavanyab.application.Application;
@@ -26,7 +27,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class AddChildFragment extends Fragment {
-
+    private FragmentTransaction ft;
     private AppCompatTextView txt_date;
     private AppCompatEditText edt_name, edt_family;
     private CardView btn_save;
@@ -54,6 +55,7 @@ public class AddChildFragment extends Fragment {
         spinner_year = view.findViewById(R.id.spinner_year);
         spinner_month = view.findViewById(R.id.spinner_month);
         spinner_day = view.findViewById(R.id.spinner_day);
+        ft = getActivity().getSupportFragmentManager().beginTransaction();
 
         Date date = new Date();
         txt_date.setText(DateConvert.day_of_week(date.getYear(), date.getMonth(), date.getDay()) + " " + DateConvert.getDay() + " " + DateConvert.getMonth() + " " + DateConvert.getYear());
@@ -162,7 +164,7 @@ public class AddChildFragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = edt_name.getText().toString();
+                /*String name = edt_name.getText().toString();
                 String family = edt_family.getText().toString();
                 String dateCreation = txt_date.getText().toString();
 
@@ -176,7 +178,10 @@ public class AddChildFragment extends Fragment {
                 child.setLastName(family);
                 child.setDateCreation(dateCreation);
                 child.setBirthDate(yearStr + "/" + monthStr + "/" + dayStr);
-                Application.getInstance().getDatebaseHelper().getChildRuntimeDao().create(child);
+                Application.getInstance().getDatebaseHelper().getChildRuntimeDao().create(child);*/
+                ft.replace(R.id.container, new StartEvaluatingFragment());
+                ft.addToBackStack(null);
+                ft.commit();
             }
         });
         return view;
