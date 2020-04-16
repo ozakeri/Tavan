@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.StartEvaluatingFragment">
+    tools:context=".activity.StartEvaluatingActivity">
 
 
     <RelativeLayout
@@ -27,6 +27,7 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_prev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -45,6 +46,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -57,8 +59,8 @@
             android:id="@+id/txt_placeLoad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@+id/layout_img"
+            android:layout_centerHorizontal="true"
             android:text="صدا و جایگاه" />
 
         <LinearLayout
@@ -68,31 +70,35 @@
             android:layout_centerHorizontal="true">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:text="صحیح" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_false"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:text="غلط" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_irritability"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:text="رد شدن" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_keyboard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 android:text="کیبورد" />
 
         </LinearLayout>
@@ -101,8 +107,8 @@
             android:id="@+id/material_design_android_floating_action_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             fab:menu_animationDelayPerItem="55"
             fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_buttonSpacing="0dp"

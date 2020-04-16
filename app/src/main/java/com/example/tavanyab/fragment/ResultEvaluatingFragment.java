@@ -1,5 +1,7 @@
 package com.example.tavanyab.fragment;
 
+import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

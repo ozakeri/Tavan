@@ -16,4 +16,30 @@
     <string name="month">ماه</string>
     <string name="day">روز</string>
 
+    <string-array name="letter_array">
+        <item>p</item>
+        <item>b </item>
+        <item>t </item>
+        <item>d </item>
+        <item>k </item>
+        <item>g </item>
+        <item>ʔ </item>
+        <item>tʃ </item>
+        <item>dʒ </item>
+        <item>f </item>
+        <item>v </item>
+        <item>s </item>
+        <item>z </item>
+        <item>ʃ </item>
+        <item>ʒ </item>
+        <item>χ </item>
+        <item>ɢ </item>
+        <item>h </item>
+        <item>m </item>
+        <item>n </item>
+        <item>l </item>
+        <item>r </item>
+        <item>j </item>
+    </string-array>
+
 </resources>

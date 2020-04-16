@@ -10,7 +10,7 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-public class DBHelper extends OrmLiteSqliteOpenHelper {
+public class DBHelpeOld extends OrmLiteSqliteOpenHelper {
 
     // Fields
 
@@ -20,7 +20,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 
     // Public methods
 
-    public DBHelper(Context context) {
+    public DBHelpeOld(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         getWritableDatabase();
     }

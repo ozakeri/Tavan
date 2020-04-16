@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tavanyab.MainActivity;
 import com.example.tavanyab.R;
+import com.example.tavanyab.application.Application;
 
 
 /**
@@ -40,42 +41,34 @@ public class HomeFragment extends Fragment {
         txt_about = view.findViewById(R.id.txt_about);
         txt_contact = view.findViewById(R.id.txt_contact);
 
-        AppCompatImageView img_filter = ((MainActivity)getActivity()).findViewById(R.id.img_filter);
+        AppCompatImageView img_filter = ((MainActivity) getActivity()).findViewById(R.id.img_filter);
         img_filter.setVisibility(View.GONE);
 
         cardView_assessment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ft.replace(R.id.container, new AssessmentFragment());
-                ft.addToBackStack(null);
-                ft.commit();
+                Application.getInstance().gotoFragment(new AssessmentFragment(), getActivity(), "AssessmentFragment");
             }
         });
 
         cardView_quickAccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ft.replace(R.id.container, new QuickAccessFragment());
-                ft.addToBackStack(null);
-                ft.commit();
+                Application.getInstance().gotoFragment(new QuickAccessFragment(), getActivity(), "QuickAccessFragment");
             }
         });
 
         txt_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ft.replace(R.id.container, new AboutFragment());
-                ft.addToBackStack(null);
-                ft.commit();
+                Application.getInstance().gotoFragment(new AboutFragment(), getActivity(), "AboutFragment");
             }
         });
 
         txt_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ft.replace(R.id.container, new ContactUsFragment());
-                ft.addToBackStack(null);
-                ft.commit();
+                Application.getInstance().gotoFragment(new ContactUsFragment(), getActivity(), "ContactUsFragment");
             }
         });
 

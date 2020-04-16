@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tavanyab.R;
-import com.example.tavanyab.model.Child;
+import com.example.tavanyab.db.Child;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +33,8 @@ public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.Cust
     public void onBindViewHolder(@NonNull CustomView holder, int position) {
         Child child = childList.get(position);
         if (child != null) {
-            holder.txt_nameFamily.setText(child.getFirstName() + " " + child.getLastName());
-            holder.txt_dateCreation.setText(child.getDateCreation());
+            holder.txt_nameFamily.setText(child.getFirst_name() + " " + child.getLast_name());
+            holder.txt_dateCreation.setText(child.getDate_creation());
         }
     }
 

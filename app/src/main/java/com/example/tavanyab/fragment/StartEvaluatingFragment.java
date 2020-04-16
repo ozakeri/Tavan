@@ -1,5 +1,6 @@
 package com.example.tavanyab.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -12,10 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tavanyab.R;
+import com.example.tavanyab.application.Application;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
-
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,13 +34,15 @@ public class StartEvaluatingFragment extends Fragment {
     }
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_start_evaluating, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRetainInstance(true);
         numberPicker = view.findViewById(R.id.picker);
-
         numberPicker.setMinValue(1);
         numberPicker.setMaxValue(data.length);
         numberPicker.setDisplayedValues(data);
@@ -56,9 +58,6 @@ public class StartEvaluatingFragment extends Fragment {
         floatingActionButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO something when floating action menu first item clicked
-                ft.replace(R.id.container, new ResultEvaluatingFragment());
-                ft.addToBackStack(null);
-                ft.commit();
 
             }
         });

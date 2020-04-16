@@ -1,5 +1,7 @@
 package com.example.tavanyab.fragment;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +17,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.tavanyab.R;
-import com.example.tavanyab.application.Application;
-import com.example.tavanyab.model.Child;
+import com.example.tavanyab.activity.StartEvaluatingActivity;
+import com.example.tavanyab.db.Child;
+import com.example.tavanyab.db.manager.DBManager;
+import com.example.tavanyab.db.manager.Services;
 import com.example.tavanyab.utiles.DateConvert;
 
 import java.util.ArrayList;
@@ -37,6 +41,7 @@ public class AddChildFragment extends Fragment {
     private String[] month = {"فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر", "دي", "بهمن", "اسفند"};
     private String[] day = {"شنبه", "يکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه"};
     private String yearStr, monthStr, dayStr;
+    private Services services;
 
     public AddChildFragment() {
         // Required empty public constructor
@@ -48,6 +53,8 @@ public class AddChildFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_child, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        services = new Services(new DBManager(getActivity()));
         txt_date = view.findViewById(R.id.txt_date);
         edt_name = view.findViewById(R.id.edt_name);
         edt_family = view.findViewById(R.id.edt_family);
@@ -164,24 +171,23 @@ public class AddChildFragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*String name = edt_name.getText().toString();
+
+                String name = edt_name.getText().toString();
                 String family = edt_family.getText().toString();
                 String dateCreation = txt_date.getText().toString();
-
-                System.out.println("name=====" + name);
-                System.out.println("name=====" + family);
-                System.out.println("name=====" + dateCreation);
-                System.out.println("name=====" + yearStr + "/" + monthStr + "/" + dayStr);
+                String birthDate = yearStr + "/" + monthStr + "/" + dayStr;
 
                 Child child = new Child();
-                child.setFirstName(name);
-                child.setLastName(family);
-                child.setDateCreation(dateCreation);
-                child.setBirthDate(yearStr + "/" + monthStr + "/" + dayStr);
-                Application.getInstance().getDatebaseHelper().getChildRuntimeDao().create(child);*/
-                ft.replace(R.id.container, new StartEvaluatingFragment());
-                ft.addToBackStack(null);
-                ft.commit();
+                child.setFirst_name(name);
+                child.setLast_name(family);
+                child.setBirth_date(birthDate);
+                child.setDate_creation(dateCreation);
+                services.insertChild(child);
+
+                Intent intent = new Intent(getActivity(), StartEvaluatingActivity.class);
+                System.out.println("getId=====" + child.getId());
+                intent.putExtra("childId", child.getId());
+                startActivity(intent);
             }
         });
         return view;
