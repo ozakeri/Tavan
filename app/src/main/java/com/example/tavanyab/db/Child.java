@@ -20,6 +20,7 @@ public class Child {
     private String last_name;
     private String birth_date;
     private String date_creation;
+    private String doctor_name;
 
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
@@ -33,13 +34,14 @@ public class Child {
     }
 
     @Generated
-    public Child(Long id, int child_id, String first_name, String last_name, String birth_date, String date_creation) {
+    public Child(Long id, int child_id, String first_name, String last_name, String birth_date, String date_creation, String doctor_name) {
         this.id = id;
         this.child_id = child_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.birth_date = birth_date;
         this.date_creation = date_creation;
+        this.doctor_name = doctor_name;
     }
 
     public Long getId() {
@@ -88,6 +90,14 @@ public class Child {
 
     public void setDate_creation(String date_creation) {
         this.date_creation = date_creation;
+    }
+
+    public String getDoctor_name() {
+        return doctor_name;
+    }
+
+    public void setDoctor_name(String doctor_name) {
+        this.doctor_name = doctor_name;
     }
 
     // KEEP METHODS - put your custom methods here

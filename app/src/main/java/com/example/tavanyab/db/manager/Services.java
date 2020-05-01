@@ -1,5 +1,6 @@
 package com.example.tavanyab.db.manager;
 
+import com.example.tavanyab.db.Assessment;
 import com.example.tavanyab.db.Child;
 import com.example.tavanyab.db.Result;
 
@@ -60,7 +61,31 @@ public class Services {
         return databaseManager.saveOrUpdateResult(result);
     }
 
-    public Result getResultByChildIdAndLetter(Long childId,String letter) {
+    public Result getResultByChildIdAndLetter(Long childId, String letter) {
         return databaseManager.getResultByChildIdAndLetter(childId, letter);
+    }
+
+    public Result getResultByLetter(String letter) {
+        return databaseManager.getResultByLetter(letter);
+    }
+
+    public void bulkInsertOrUpdateAssessments(List<Assessment> assessmentList) {
+        databaseManager.bulkInsertOrUpdateAssessments(assessmentList);
+    }
+
+    public Assessment getAssessmentByKeyword(String letter) {
+        return databaseManager.getAssessmentByKeyword(letter);
+    }
+
+    public List<Assessment> getAllAssessment() {
+        return databaseManager.getAllAssessment();
+    }
+
+    public List<Assessment> getAssessmentListById(Long assessmentId) {
+        return databaseManager.getAssessmentListById(assessmentId);
+    }
+
+    public List<Assessment> getAssessmentListByLetterName(String letterName) {
+        return databaseManager.getAssessmentListByLetterName(letterName);
     }
 }

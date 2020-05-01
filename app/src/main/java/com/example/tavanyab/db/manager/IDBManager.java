@@ -1,5 +1,6 @@
 package com.example.tavanyab.db.manager;
 
+import com.example.tavanyab.db.Assessment;
 import com.example.tavanyab.db.Child;
 import com.example.tavanyab.db.Result;
 
@@ -35,5 +36,20 @@ public interface IDBManager {
     public Result saveOrUpdateResult(Result result);
 
     public Result getResultByChildIdAndLetter(Long childId, String letter);
+
+    public Result getResultByLetter(String letter);
+
+
+    //************************************************
+    public void bulkInsertOrUpdateAssessments(List<Assessment> assessmentList);
+
+    public Assessment getAssessmentByKeyword(String letter);
+
+    public List<Assessment> getAllAssessment();
+
+    public List<Assessment> getAssessmentListById(Long assessmentId);
+
+    public List<Assessment> getAssessmentListByLetterName(String letterName);
+
 
 }

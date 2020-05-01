@@ -33,7 +33,7 @@ import java.util.List;
 public class AddChildFragment extends Fragment {
     private FragmentTransaction ft;
     private AppCompatTextView txt_date;
-    private AppCompatEditText edt_name, edt_family;
+    private AppCompatEditText edt_name, edt_family, edt_doctor;
     private CardView btn_save;
     private Spinner spinner_year, spinner_month, spinner_day;
     private List<String> yearList = new ArrayList<>();
@@ -58,6 +58,7 @@ public class AddChildFragment extends Fragment {
         txt_date = view.findViewById(R.id.txt_date);
         edt_name = view.findViewById(R.id.edt_name);
         edt_family = view.findViewById(R.id.edt_family);
+        edt_doctor = view.findViewById(R.id.edt_doctor);
         btn_save = view.findViewById(R.id.btn_save);
         spinner_year = view.findViewById(R.id.spinner_year);
         spinner_month = view.findViewById(R.id.spinner_month);
@@ -65,7 +66,7 @@ public class AddChildFragment extends Fragment {
         ft = getActivity().getSupportFragmentManager().beginTransaction();
 
         Date date = new Date();
-        txt_date.setText(DateConvert.day_of_week(date.getYear(), date.getMonth(), date.getDay()) + " " + DateConvert.getDay() + " " + DateConvert.getMonth() + " " + DateConvert.getYear());
+//        txt_date.setText(DateConvert.day_of_week(date.getYear(), date.getMonth(), date.getDay()) + " " + DateConvert.getDay() + " " + DateConvert.getMonth() + " " + DateConvert.getYear());
 
         int thisYear = Integer.parseInt(DateConvert.getYear());
         System.out.println("thisYear====" + thisYear);
@@ -174,12 +175,14 @@ public class AddChildFragment extends Fragment {
 
                 String name = edt_name.getText().toString();
                 String family = edt_family.getText().toString();
+                String doctor_name = edt_doctor.getText().toString();
                 String dateCreation = txt_date.getText().toString();
                 String birthDate = yearStr + "/" + monthStr + "/" + dayStr;
 
                 Child child = new Child();
                 child.setFirst_name(name);
                 child.setLast_name(family);
+                child.setDoctor_name(doctor_name);
                 child.setBirth_date(birthDate);
                 child.setDate_creation(dateCreation);
                 services.insertChild(child);

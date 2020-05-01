@@ -22,6 +22,7 @@ public class Result {
     private Boolean middle_res;
     private Boolean last_res;
     private Boolean irritability;
+    private String note;
 
     // KEEP FIELDS - put your custom fields here
     // KEEP FIELDS END
@@ -35,7 +36,7 @@ public class Result {
     }
 
     @Generated
-    public Result(Long id, int res_id, int child_id, String letter_name, Boolean first_res, Boolean middle_res, Boolean last_res, Boolean irritability) {
+    public Result(Long id, int res_id, int child_id, String letter_name, Boolean first_res, Boolean middle_res, Boolean last_res, Boolean irritability, String note) {
         this.id = id;
         this.res_id = res_id;
         this.child_id = child_id;
@@ -44,6 +45,7 @@ public class Result {
         this.middle_res = middle_res;
         this.last_res = last_res;
         this.irritability = irritability;
+        this.note = note;
     }
 
     public Long getId() {
@@ -108,6 +110,14 @@ public class Result {
 
     public void setIrritability(Boolean irritability) {
         this.irritability = irritability;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     // KEEP METHODS - put your custom methods here

@@ -14,6 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.tavanyab.MainActivity;
 import com.example.tavanyab.R;
 import com.example.tavanyab.application.Application;
+import com.example.tavanyab.db.manager.DBManager;
+import com.example.tavanyab.db.manager.Services;
 
 
 /**
@@ -24,7 +26,6 @@ public class HomeFragment extends Fragment {
     private CardView cardView_assessment, cardView_quickAccess;
     private AppCompatTextView txt_about, txt_contact;
     private FragmentTransaction ft;
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -40,6 +41,8 @@ public class HomeFragment extends Fragment {
         cardView_quickAccess = view.findViewById(R.id.cardView_quickAccess);
         txt_about = view.findViewById(R.id.txt_about);
         txt_contact = view.findViewById(R.id.txt_contact);
+        DBManager dbManager = new DBManager(getActivity());
+        dbManager.createDatabaseIfChange();
 
         AppCompatImageView img_filter = ((MainActivity) getActivity()).findViewById(R.id.img_filter);
         img_filter.setVisibility(View.GONE);

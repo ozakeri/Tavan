@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="LockedOrientationActivity">
-        <activity android:name=".activity.StartEvaluatingActivity"
+        <activity android:name=".activity.PracticeActivity"
             android:screenOrientation="landscape"/>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".activity.StartEvaluatingActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -31,6 +31,7 @@ public class ResultDao extends AbstractDao<Result, Long> {
         public final static Property Middle_res = new Property(5, Boolean.class, "middle_res", false, "MIDDLE_RES");
         public final static Property Last_res = new Property(6, Boolean.class, "last_res", false, "LAST_RES");
         public final static Property Irritability = new Property(7, Boolean.class, "irritability", false, "IRRITABILITY");
+        public final static Property Note = new Property(8, String.class, "note", false, "NOTE");
     }
 
 
@@ -53,7 +54,8 @@ public class ResultDao extends AbstractDao<Result, Long> {
                 "\"FIRST_RES\" INTEGER," + // 4: first_res
                 "\"MIDDLE_RES\" INTEGER," + // 5: middle_res
                 "\"LAST_RES\" INTEGER," + // 6: last_res
-                "\"IRRITABILITY\" INTEGER);"); // 7: irritability
+                "\"IRRITABILITY\" INTEGER," + // 7: irritability
+                "\"NOTE\" TEXT);"); // 8: note
     }
 
     /** Drops the underlying database table. */
@@ -97,6 +99,11 @@ public class ResultDao extends AbstractDao<Result, Long> {
         if (irritability != null) {
             stmt.bindLong(8, irritability ? 1L: 0L);
         }
+ 
+        String note = entity.getNote();
+        if (note != null) {
+            stmt.bindString(9, note);
+        }
     }
 
     @Override
@@ -134,6 +141,11 @@ public class ResultDao extends AbstractDao<Result, Long> {
         if (irritability != null) {
             stmt.bindLong(8, irritability ? 1L: 0L);
         }
+ 
+        String note = entity.getNote();
+        if (note != null) {
+            stmt.bindString(9, note);
+        }
     }
 
     @Override
@@ -151,7 +163,8 @@ public class ResultDao extends AbstractDao<Result, Long> {
             cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0, // first_res
             cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0, // middle_res
             cursor.isNull(offset + 6) ? null : cursor.getShort(offset + 6) != 0, // last_res
-            cursor.isNull(offset + 7) ? null : cursor.getShort(offset + 7) != 0 // irritability
+            cursor.isNull(offset + 7) ? null : cursor.getShort(offset + 7) != 0, // irritability
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8) // note
         );
         return entity;
     }
@@ -166,6 +179,7 @@ public class ResultDao extends AbstractDao<Result, Long> {
         entity.setMiddle_res(cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0);
         entity.setLast_res(cursor.isNull(offset + 6) ? null : cursor.getShort(offset + 6) != 0);
         entity.setIrritability(cursor.isNull(offset + 7) ? null : cursor.getShort(offset + 7) != 0);
+        entity.setNote(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
      }
     
     @Override

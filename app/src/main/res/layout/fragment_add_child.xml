@@ -3,92 +3,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".fragment.AddChildFragment">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txt_dateTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
-            android:text="تاریخ مراجعه : " />
-
-        <TextView
-            android:id="@+id/txt_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_toLeftOf="@+id/txt_dateTitle"
-            android:text="date" />
-
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edt_name"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_date"
-            android:layout_margin="20dp"
-            android:hint="نام : " />
+            android:layout_height="match_parent">
 
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edt_family"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edt_name"
-            android:layout_margin="20dp"
-            android:hint="نام خانوادگی : " />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_below="@+id/edt_family">
-
-
-            <Spinner
-                android:id="@+id/spinner_year"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:prompt="@string/yera" />
-
-            <Spinner
-                android:id="@+id/spinner_month"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:prompt="@string/month"/>
-
-            <Spinner
-                android:id="@+id/spinner_day"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:prompt="@string/day"/>
-        </LinearLayout>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="20dp">
-
-            <TextView
+            <com.example.tavanyab.utiles.CustomTextView
+                android:id="@+id/txt_dateTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="شروع ارزیابی" />
+                android:layout_alignParentRight="true"
+                android:layout_margin="20dp"
+                android:text="تاریخ مراجعه : " />
 
-        </androidx.cardview.widget.CardView>
+            <com.example.tavanyab.utiles.CustomTextView
+                android:id="@+id/txt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_toLeftOf="@+id/txt_dateTitle"
+                android:text="date" />
 
-    </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_date"
+                android:layout_margin="20dp"
+                android:hint="نام : " />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_name"
+                android:layout_margin="20dp"
+                android:hint="نام خانوادگی : " />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_doctor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_family"
+                android:layout_margin="20dp"
+                android:hint="نام درمانگر : " />
+
+            <LinearLayout
+                android:id="@+id/layout_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_doctor"
+                android:layout_margin="20dp">
+
+
+                <Spinner
+                    android:id="@+id/spinner_year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:prompt="@string/yera" />
+
+                <Spinner
+                    android:id="@+id/spinner_month"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:prompt="@string/month" />
+
+                <Spinner
+                    android:id="@+id/spinner_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:prompt="@string/day" />
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/layout_spinner"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20dp">
+
+                <com.example.tavanyab.utiles.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="شروع ارزیابی" />
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
 
 </FrameLayout>

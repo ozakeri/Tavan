@@ -4,175 +4,202 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activity.StartEvaluatingActivity">
 
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <NumberPicker
-            android:id="@+id/picker"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <NumberPicker
+                android:id="@+id/picker"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp" />
 
 
-        <LinearLayout
-            android:id="@+id/layout_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_prev"
+            <LinearLayout
+                android:id="@+id/layout_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="15dp"
-                android:text="قبلی" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_prev"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/prev_icon" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:background="@mipmap/ic_launcher" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            </androidx.cardview.widget.CardView>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:scaleY="-1"
+                        android:background="@mipmap/ic_launcher" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:text="بعدی" />
+                </androidx.cardview.widget.CardView>
 
-        </LinearLayout>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_next"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/next_icon" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txt_placeLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/layout_img"
-            android:layout_centerHorizontal="true"
-            android:text="صدا و جایگاه" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt_placeLoad"
-            android:layout_centerHorizontal="true">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_true"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="صحیح" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_false"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="غلط" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_irritability"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="رد شدن" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_keyboard"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:text="کیبورد" />
-
-        </LinearLayout>
-
-        <com.github.clans.fab.FloatingActionMenu
-            android:id="@+id/material_design_android_floating_action_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            fab:menu_animationDelayPerItem="55"
-            fab:menu_backgroundColor="@android:color/transparent"
-            fab:menu_buttonSpacing="0dp"
-            fab:menu_colorNormal="#da3c2f"
-            fab:menu_colorPressed="#dc4b3f"
-            fab:menu_colorRipple="#99d4d4d4"
-            fab:menu_fab_label="نتخاب کنید..."
-            fab:menu_fab_size="normal"
-            fab:menu_icon="@drawable/ic_menu"
-            fab:menu_labels_colorNormal="#333"
-            fab:menu_labels_colorPressed="#444"
-            fab:menu_labels_colorRipple="#66efecec"
-            fab:menu_labels_cornerRadius="3dp"
-            fab:menu_labels_ellipsize="none"
-            fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-            fab:menu_labels_margin="0dp"
-            fab:menu_labels_maxLines="-1"
-            fab:menu_labels_padding="8dp"
-            fab:menu_labels_position="left"
-            fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-            fab:menu_labels_showShadow="true"
-            fab:menu_labels_singleLine="false"
-            fab:menu_labels_textColor="#f2f1f1"
-            fab:menu_labels_textSize="15sp"
-            fab:menu_openDirection="up"
-            fab:menu_shadowColor="#66aff198"
-            fab:menu_shadowRadius="4dp"
-            fab:menu_shadowXOffset="1dp"
-            fab:menu_shadowYOffset="4dp"
-            fab:menu_showShadow="true">
-
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/material_design_floating_action_menu_item4"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_placeLoad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                fab:fab_label="یادداشت"
-                fab:fab_size="mini" />
+                android:layout_below="@+id/layout_img"
+                android:layout_centerHorizontal="true"
+                android:text="صدا و جایگاه" />
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/material_design_floating_action_menu_item1"
+            <LinearLayout
+                android:id="@+id/key_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                fab:fab_label="پایان ارزیابی"
-                fab:fab_size="mini" />
+                android:layout_below="@+id/txt_placeLoad"
+                android:layout_centerHorizontal="true">
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/material_design_floating_action_menu_item2"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/true_icon"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_false"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/false_icon" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_irritability"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/info_icon"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_keyboard"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/keyboard_icon"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/txt_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/key_layout"
+                android:layout_toRightOf="@+id/picker"
+                android:maxLines="3"
+                android:hint="یادداشت"
+                android:layout_toLeftOf="@+id/material_design_android_floating_action_menu"/>
+
+
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/material_design_android_floating_action_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                fab:fab_label="برو به ارزیابی"
-                fab:fab_size="mini" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                fab:menu_animationDelayPerItem="55"
+                fab:menu_backgroundColor="@android:color/transparent"
+                fab:menu_buttonSpacing="0dp"
+                fab:menu_colorNormal="#da3c2f"
+                fab:menu_colorPressed="#dc4b3f"
+                fab:menu_colorRipple="#99d4d4d4"
+                fab:menu_fab_label="نتخاب کنید..."
+                fab:menu_fab_size="normal"
+                fab:menu_icon="@drawable/ic_add"
+                fab:menu_labels_colorNormal="#333"
+                fab:menu_labels_colorPressed="#444"
+                fab:menu_labels_colorRipple="#66efecec"
+                fab:menu_labels_cornerRadius="3dp"
+                fab:menu_labels_ellipsize="none"
+                fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+                fab:menu_labels_margin="0dp"
+                fab:menu_labels_maxLines="-1"
+                fab:menu_labels_padding="8dp"
+                fab:menu_labels_position="left"
+                fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
+                fab:menu_labels_showShadow="true"
+                fab:menu_labels_singleLine="false"
+                fab:menu_labels_textColor="#f2f1f1"
+                fab:menu_labels_textSize="15sp"
+                fab:menu_openDirection="up"
+                fab:menu_shadowColor="#66aff198"
+                fab:menu_shadowRadius="4dp"
+                fab:menu_shadowXOffset="1dp"
+                fab:menu_shadowYOffset="4dp"
+                fab:menu_showShadow="true">
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/material_design_floating_action_menu_item3"
-                android:layout_width="wrap_content"
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/material_design_floating_action_menu_item4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    fab:fab_label="یادداشت"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/material_design_floating_action_menu_item1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    fab:fab_label="پایان ارزیابی"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/material_design_floating_action_menu_item2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    fab:fab_label="برو به ارزیابی"
+                    fab:fab_size="mini" />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/material_design_floating_action_menu_item3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    fab:fab_label="ذخیره و خروج"
+                    fab:fab_size="mini" />
+            </com.github.clans.fab.FloatingActionMenu>
+
+            <com.example.tavanyab.keyboard.InAppKeyboard
+                android:id="@+id/keyboard"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                fab:fab_label="ذخیره و خروج"
-                fab:fab_size="mini" />
-        </com.github.clans.fab.FloatingActionMenu>
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/txt_note"
+                android:visibility="gone"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
 
 </FrameLayout>

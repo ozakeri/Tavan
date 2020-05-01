@@ -5,18 +5,24 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.example.tavanyab.db.Assessment;
+import com.example.tavanyab.db.AssessmentDao;
 import com.example.tavanyab.db.Child;
 import com.example.tavanyab.db.ChildDao;
 import com.example.tavanyab.db.DaoMaster;
 import com.example.tavanyab.db.DaoSession;
 import com.example.tavanyab.db.Result;
 import com.example.tavanyab.db.ResultDao;
+import com.example.tavanyab.utiles.FileUtils;
 
 import org.greenrobot.greendao.async.AsyncOperation;
 import org.greenrobot.greendao.async.AsyncOperationListener;
 import org.greenrobot.greendao.async.AsyncSession;
 import org.greenrobot.greendao.query.QueryBuilder;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -52,6 +58,19 @@ public class DBManager implements IDBManager, AsyncOperationListener {
         completedOperations = new CopyOnWriteArrayList<AsyncOperation>();
     }
 
+    public synchronized void createDatabaseIfChange() {
+        try {
+            openWritableDb();
+            List<Assessment> assessmentList = getAllAssessment();
+            if (assessmentList.isEmpty()) {
+                initSeedData();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @param context The Android {@link android.content.Context}.
      * @return this.instance
@@ -68,6 +87,38 @@ public class DBManager implements IDBManager, AsyncOperationListener {
     /**
      * Query for readable DB
      */
+
+    private void initSeedData() {
+
+        try {
+            InputStream myInput = null;
+            myInput = context.getAssets().open("Assessment.csv");
+            List<String[]> strArrayList = FileUtils.readCSVFile(myInput);
+            List<Assessment> assessmentList = new ArrayList<Assessment>();
+            System.out.println("strArrayList===" + strArrayList.size());
+
+            for (String[] strArray : strArrayList) {
+                Assessment assessment = new Assessment();
+                assessment.setId(Long.valueOf(strArray[1]));
+                assessment.setLetter_name(strArray[2]);
+                assessment.setFirst_name(strArray[3]);
+                assessment.setMiddle_name(strArray[4]);
+                assessment.setLast_name(strArray[5]);
+                assessment.setFirst_icon(strArray[6]);
+                assessment.setMiddle_icon(strArray[7]);
+                assessment.setLast_icon(strArray[8]);
+                assessmentList.add(assessment);
+            }
+
+            myInput.close();
+            System.out.println("assessmentList===" + assessmentList.size());
+            bulkInsertOrUpdateAssessments(assessmentList);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void openReadableDb() throws SQLiteException {
         database = mHelper.getReadableDatabase();
         daoMaster = new DaoMaster(database);
@@ -284,7 +335,7 @@ public class DBManager implements IDBManager, AsyncOperationListener {
             openWritableDb();
             ResultDao resultDao = daoSession.getResultDao();
             resultDao.insertOrReplace(result);
-            Log.d(TAG, "Inserted or Replace result: " + result.getId() + " to the schema.");
+            Log.d(TAG, "saveOrUpdateResult: " + result.getId() + " to the schema.");
             daoSession.clear();
 
         } catch (Exception e) {
@@ -312,6 +363,117 @@ public class DBManager implements IDBManager, AsyncOperationListener {
             e.printStackTrace();
         }
         return result;
+    }
+
+
+    public Result getResultByLetter(String letter) {
+        Result result = null;
+        try {
+            openReadableDb();
+            ResultDao resultDao = daoSession.getResultDao();
+            QueryBuilder<Result> queryBuilder = resultDao.queryBuilder();
+            queryBuilder.where(ResultDao.Properties.Letter_name.eq(letter));
+            queryBuilder.limit(1);
+            List<Result> resultList = queryBuilder.list();
+            if (!resultList.isEmpty()) {
+                result = resultList.get(0);
+            }
+
+            daoSession.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public synchronized void bulkInsertOrUpdateAssessments(List<Assessment> lines) {
+        try {
+            if (lines != null && lines.size() > 0) {
+                openWritableDb();
+                asyncSession.insertOrReplaceInTx(Assessment.class, lines);
+                assertWaitForCompletion1Sec();
+                daoSession.clear();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Assessment getAssessmentByKeyword(String letter) {
+        Assessment assessment = null;
+        try {
+            openReadableDb();
+            AssessmentDao assessmentDao = daoSession.getAssessmentDao();
+            QueryBuilder<Assessment> queryBuilder = assessmentDao.queryBuilder();
+            queryBuilder.where(AssessmentDao.Properties.Letter_name.eq(letter));
+            queryBuilder.limit(1);
+            List<Assessment> assessmentList = queryBuilder.list();
+            if (!assessmentList.isEmpty()) {
+                assessment = assessmentList.get(0);
+            }
+
+            daoSession.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return assessment;
+    }
+
+    @Override
+    public List<Assessment> getAllAssessment() {
+        List<Assessment> assessments = null;
+        try {
+            openReadableDb();
+            AssessmentDao assessmentDao = daoSession.getAssessmentDao();
+            QueryBuilder<Assessment> queryBuilder = assessmentDao.queryBuilder();
+            assessments = queryBuilder.list();
+
+            daoSession.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return assessments;
+    }
+
+    @Override
+    public List<Assessment> getAssessmentListById(Long assessmentId) {
+        List<Assessment> assessments = null;
+        try {
+            openReadableDb();
+            AssessmentDao assessmentDao = daoSession.getAssessmentDao();
+            QueryBuilder<Assessment> queryBuilder = assessmentDao.queryBuilder();
+            queryBuilder.where(AssessmentDao.Properties.Assessment_id.eq(assessmentId));
+            assessments = queryBuilder.list();
+
+            daoSession.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return assessments;
+    }
+
+
+    public List<Assessment> getAssessmentListByLetterName(String letterName) {
+        List<Assessment> assessments = null;
+        try {
+            openReadableDb();
+            AssessmentDao assessmentDao = daoSession.getAssessmentDao();
+            QueryBuilder<Assessment> queryBuilder = assessmentDao.queryBuilder();
+            queryBuilder.where(AssessmentDao.Properties.Letter_name.eq(letterName));
+            assessments = queryBuilder.list();
+
+            daoSession.clear();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return assessments;
+    }
+
+    private void assertWaitForCompletion1Sec() {
+        asyncSession.waitForCompletion(1000);
+        asyncSession.isCompleted();
     }
 
 }

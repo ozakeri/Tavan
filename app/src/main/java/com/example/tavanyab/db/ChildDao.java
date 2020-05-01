@@ -29,6 +29,7 @@ public class ChildDao extends AbstractDao<Child, Long> {
         public final static Property Last_name = new Property(3, String.class, "last_name", false, "LAST_NAME");
         public final static Property Birth_date = new Property(4, String.class, "birth_date", false, "BIRTH_DATE");
         public final static Property Date_creation = new Property(5, String.class, "date_creation", false, "DATE_CREATION");
+        public final static Property Doctor_name = new Property(6, String.class, "doctor_name", false, "DOCTOR_NAME");
     }
 
 
@@ -49,7 +50,8 @@ public class ChildDao extends AbstractDao<Child, Long> {
                 "\"FIRST_NAME\" TEXT," + // 2: first_name
                 "\"LAST_NAME\" TEXT," + // 3: last_name
                 "\"BIRTH_DATE\" TEXT," + // 4: birth_date
-                "\"DATE_CREATION\" TEXT);"); // 5: date_creation
+                "\"DATE_CREATION\" TEXT," + // 5: date_creation
+                "\"DOCTOR_NAME\" TEXT);"); // 6: doctor_name
     }
 
     /** Drops the underlying database table. */
@@ -87,6 +89,11 @@ public class ChildDao extends AbstractDao<Child, Long> {
         if (date_creation != null) {
             stmt.bindString(6, date_creation);
         }
+ 
+        String doctor_name = entity.getDoctor_name();
+        if (doctor_name != null) {
+            stmt.bindString(7, doctor_name);
+        }
     }
 
     @Override
@@ -118,6 +125,11 @@ public class ChildDao extends AbstractDao<Child, Long> {
         if (date_creation != null) {
             stmt.bindString(6, date_creation);
         }
+ 
+        String doctor_name = entity.getDoctor_name();
+        if (doctor_name != null) {
+            stmt.bindString(7, doctor_name);
+        }
     }
 
     @Override
@@ -133,7 +145,8 @@ public class ChildDao extends AbstractDao<Child, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // first_name
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // last_name
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // birth_date
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // date_creation
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // date_creation
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // doctor_name
         );
         return entity;
     }
@@ -146,6 +159,7 @@ public class ChildDao extends AbstractDao<Child, Long> {
         entity.setLast_name(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setBirth_date(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setDate_creation(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setDoctor_name(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
      }
     
     @Override

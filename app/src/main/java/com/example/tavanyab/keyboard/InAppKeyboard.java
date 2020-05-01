@@ -28,19 +28,6 @@ public class InAppKeyboard extends LinearLayout implements View.OnClickListener 
         init(context, attrs);
     }
 
-    // in_app_keyboard keys (buttons)
-    private Button mButton1;
-    private Button mButton2;
-    private Button mButton3;
-    private Button mButton4;
-    private Button mButton5;
-    private Button mButton6;
-    private Button mButton7;
-    private Button mButton8;
-    private Button mButton9;
-    private Button mButton0;
-    private Button mButtonDelete;
-    private Button mButtonEnter;
 
     // This will map the button resource id to the String value that we want to
     // input when that button is clicked.
@@ -53,18 +40,33 @@ public class InAppKeyboard extends LinearLayout implements View.OnClickListener 
 
         // initialize buttons
         LayoutInflater.from(context).inflate(R.layout.in_app_keyboard, this, true);
-        mButton1 = (Button) findViewById(R.id.button_1);
-        mButton2 = (Button) findViewById(R.id.button_2);
-        mButton3 = (Button) findViewById(R.id.button_3);
-        mButton4 = (Button) findViewById(R.id.button_4);
-        mButton5 = (Button) findViewById(R.id.button_5);
-        mButton6 = (Button) findViewById(R.id.button_6);
-        mButton7 = (Button) findViewById(R.id.button_7);
-        mButton8 = (Button) findViewById(R.id.button_8);
-        mButton9 = (Button) findViewById(R.id.button_9);
-        mButton0 = (Button) findViewById(R.id.button_0);
-        mButtonDelete = (Button) findViewById(R.id.button_delete);
-        mButtonEnter = (Button) findViewById(R.id.button_enter);
+        // in_app_keyboard keys (buttons)
+        Button mButton1 = (Button) findViewById(R.id.button_1);
+        Button mButton2 = (Button) findViewById(R.id.button_2);
+        Button mButton3 = (Button) findViewById(R.id.button_3);
+        Button mButton4 = (Button) findViewById(R.id.button_4);
+        Button mButton5 = (Button) findViewById(R.id.button_5);
+        Button mButton6 = (Button) findViewById(R.id.button_6);
+        Button mButton7 = (Button) findViewById(R.id.button_7);
+        Button mButton8 = (Button) findViewById(R.id.button_8);
+        Button mButton9 = (Button) findViewById(R.id.button_9);
+        Button mButton0 = (Button) findViewById(R.id.button_0);
+        Button mButton11 = (Button) findViewById(R.id.button_11);
+        Button mButton12 = (Button) findViewById(R.id.button_12);
+        Button mButton13 = (Button) findViewById(R.id.button_13);
+        Button mButton14 = (Button) findViewById(R.id.button_14);
+        Button mButton15 = (Button) findViewById(R.id.button_15);
+        Button mButton16 = (Button) findViewById(R.id.button_16);
+        Button mButton17 = (Button) findViewById(R.id.button_17);
+        Button mButton18 = (Button) findViewById(R.id.button_18);
+        Button mButton19 = (Button) findViewById(R.id.button_19);
+        Button mButton20 = (Button) findViewById(R.id.button_20);
+        Button mButton21 = (Button) findViewById(R.id.button_21);
+        Button mButton22 = (Button) findViewById(R.id.button_22);
+        Button mButton23 = (Button) findViewById(R.id.button_23);
+
+        Button mButtonDelete = (Button) findViewById(R.id.button_delete);
+        Button mButtonEnter = (Button) findViewById(R.id.button_enter);
 
         // set button click listeners
         mButton1.setOnClickListener(this);
@@ -77,20 +79,46 @@ public class InAppKeyboard extends LinearLayout implements View.OnClickListener 
         mButton8.setOnClickListener(this);
         mButton9.setOnClickListener(this);
         mButton0.setOnClickListener(this);
+        mButton11.setOnClickListener(this);
+        mButton12.setOnClickListener(this);
+        mButton13.setOnClickListener(this);
+        mButton14.setOnClickListener(this);
+        mButton15.setOnClickListener(this);
+        mButton16.setOnClickListener(this);
+        mButton17.setOnClickListener(this);
+        mButton18.setOnClickListener(this);
+        mButton19.setOnClickListener(this);
+        mButton20.setOnClickListener(this);
+        mButton21.setOnClickListener(this);
+        mButton22.setOnClickListener(this);
+        mButton23.setOnClickListener(this);
         mButtonDelete.setOnClickListener(this);
         mButtonEnter.setOnClickListener(this);
 
         // map buttons IDs to input strings
-        keyValues.put(R.id.button_1, "1");
-        keyValues.put(R.id.button_2, "2");
-        keyValues.put(R.id.button_3, "3");
-        keyValues.put(R.id.button_4, "4");
-        keyValues.put(R.id.button_5, "5");
-        keyValues.put(R.id.button_6, "6");
-        keyValues.put(R.id.button_7, "7");
-        keyValues.put(R.id.button_8, "8");
-        keyValues.put(R.id.button_9, "9");
-        keyValues.put(R.id.button_0, "0");
+        keyValues.put(R.id.button_1, "p");
+        keyValues.put(R.id.button_2, "b");
+        keyValues.put(R.id.button_3, "m");
+        keyValues.put(R.id.button_4, "f");
+        keyValues.put(R.id.button_5, "v");
+        keyValues.put(R.id.button_6, "t");
+        keyValues.put(R.id.button_7, "d");
+        keyValues.put(R.id.button_8, "n");
+        keyValues.put(R.id.button_9, "r");
+        keyValues.put(R.id.button_0, "l");
+        keyValues.put(R.id.button_11, "s");
+        keyValues.put(R.id.button_12, "z");
+        keyValues.put(R.id.button_13, "j");
+        keyValues.put(R.id.button_14, "y");
+        keyValues.put(R.id.button_15, "k");
+        keyValues.put(R.id.button_16, "g");
+        keyValues.put(R.id.button_17, "q");
+        keyValues.put(R.id.button_18, "x");
+        keyValues.put(R.id.button_19, "h");
+        keyValues.put(R.id.button_20, "a");
+        keyValues.put(R.id.button_21, "ch");
+        keyValues.put(R.id.button_22, "sh");
+        keyValues.put(R.id.button_23, "zh");
         keyValues.put(R.id.button_enter, "\n");
     }
 

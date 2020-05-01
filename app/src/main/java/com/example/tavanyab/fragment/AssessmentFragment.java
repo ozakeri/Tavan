@@ -1,7 +1,6 @@
 package com.example.tavanyab.fragment;
 
 import android.annotation.SuppressLint;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +20,7 @@ import com.example.tavanyab.application.Application;
 import com.example.tavanyab.db.Child;
 import com.example.tavanyab.db.manager.DBManager;
 import com.example.tavanyab.db.manager.Services;
-import com.example.tavanyab.model.EventBusModel;
-
-import org.greenrobot.eventbus.EventBus;
+import com.example.tavanyab.utiles.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,18 +58,20 @@ public class AssessmentFragment extends Fragment {
 
         childList = services.getChildList();
         System.out.println("childList====" + childList.size());
-        if (childList != null){
-            recyclerView.setAdapter(new ChildListAdapter(childList));
+        if (childList != null) {
+            recyclerView.setAdapter(new ChildListAdapter(childList, new ChildListAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(Child item) {
+                    System.out.println("getId====" + item.getId());
+                    //Put the value
+                    ResultEvaluatingFragment resultEvaluatingFragment = new ResultEvaluatingFragment();
+                    Bundle args = new Bundle();
+                    args.putLong("child_id", item.getId());
+                    resultEvaluatingFragment.setArguments(args);
+                    getFragmentManager().beginTransaction().replace(R.id.container, resultEvaluatingFragment).commit();
+                }
+            }));
         }
-
-        //InAppKeyboard keyboard = (InAppKeyboard) view.findViewById(R.id.keyboard);
-        //EditText editText = (EditText) view.findViewById(R.id.edittext);
-
-        //editText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        //editText.setTextIsSelectable(true);
-
-        //InputConnection ic = editText.onCreateInputConnection(new EditorInfo());
-        //keyboard.setInputConnection(ic);
 
         cardView_new = view.findViewById(R.id.cardView_new);
         cardView_new.setOnClickListener(new View.OnClickListener() {

@@ -19,27 +19,45 @@
     <string-array name="letter_array">
         <item>p</item>
         <item>b </item>
-        <item>t </item>
-        <item>d </item>
-        <item>k </item>
-        <item>g </item>
-        <item>ʔ </item>
-        <item>tʃ </item>
-        <item>dʒ </item>
+        <item>m </item>
         <item>f </item>
         <item>v </item>
+        <item>t </item>
+        <item>d </item>
+        <item>n </item>
+        <item>r </item>
+        <item>l </item>
         <item>s </item>
         <item>z </item>
-        <item>ʃ </item>
-        <item>ʒ </item>
-        <item>χ </item>
-        <item>ɢ </item>
-        <item>h </item>
-        <item>m </item>
-        <item>n </item>
-        <item>l </item>
-        <item>r </item>
         <item>j </item>
+        <item>y </item>
+        <item>k </item>
+        <item>g </item>
+        <item>q </item>
+        <item>x </item>
+        <item>h </item>
+        <item>a </item>
+        <item>ch </item>
+        <item>sh </item>
+        <item>zh </item>
     </string-array>
 
+    <!--    <item>g </item>
+    <item>ʔ </item>
+    <item>tʃ </item>
+    <item>dʒ </item>
+    <item>f </item>
+    <item>v </item>
+    <item>s </item>
+    <item>z </item>
+    <item>ʃ </item>
+    <item>ʒ </item>
+    <item>χ </item>
+    <item>ɢ </item>
+    <item>h </item>
+    <item>m </item>
+    <item>n </item>
+    <item>l </item>
+    <item>r </item>
+    <item>j </item>-->
 </resources>
